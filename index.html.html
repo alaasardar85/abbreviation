@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abbreviations Glossary — Syria Sanctions Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --cream: #f5f0e8;
+    --gold: #b8972a;
+    --gold-light: #d4b04a;
+    --gold-pale: #f0e8c8;
+    --slate: #2c3e50;
+    --green: #1a5c3a;
+    --green-light: #2d8a5a;
+    --muted: #6b6b6b;
+    --border: #d4c8a8;
+    --red: #8b1a1a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--slate);
+    color: var(--cream);
+    padding: 48px 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 260px; height: 260px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    opacity: .15;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 42px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .header h1 span { color: var(--gold-light); }
+  .header p {
+    font-size: 14px;
+    color: #b8c4d4;
+    font-style: italic;
+    max-width: 580px;
+  }
+  .gold-rule {
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 40%, transparent 100%);
+  }
+
+  /* SEARCH BAR */
+  .search-bar {
+    max-width: 1040px;
+    margin: 32px auto 0;
+    padding: 0 40px;
+  }
+  .search-input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-input:focus { border-color: var(--gold); }
+  .search-input::placeholder { color: #aaa; }
+
+  /* CATEGORY FILTERS */
+  .filters {
+    max-width: 1040px;
+    margin: 14px auto 0;
+    padding: 0 40px;
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .filter-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all .18s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--slate);
+    border-color: var(--slate);
+    color: #fff;
+  }
+  .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+  /* MAIN */
+  .main {
+    max-width: 1040px;
+    margin: 28px auto 60px;
+    padding: 0 40px;
+  }
+
+  /* CATEGORY SECTION */
+  .cat-section { margin-bottom: 40px; }
+  .cat-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 14px;
+  }
+  .cat-icon {
+    width: 36px; height: 36px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+  .cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--slate);
+  }
+  .cat-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: var(--gold-pale);
+    color: var(--gold);
+  }
+
+  /* TABLE */
+  .abbr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  .abbr-table thead tr {
+    background: var(--slate);
+  }
+  .abbr-table th {
+    padding: 10px 16px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #c8d4e0;
+    font-weight: 600;
+  }
+  .abbr-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid #f0ebe0;
+    vertical-align: top;
+  }
+  .abbr-table tr:last-child td { border-bottom: none; }
+  .abbr-table tr:nth-child(even) td { background: #faf7f0; }
+  .abbr-table tr { transition: background .12s; }
+  .abbr-table tbody tr:hover td { background: var(--gold-pale); }
+
+  .abbr-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--slate);
+    white-space: nowrap;
+  }
+  .abbr-full {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .abbr-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-top: 2px;
+  }
+  .abbr-source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    background: #eef6f1;
+    padding: 2px 7px;
+    border-radius: 3px;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-right: 4px;
+  }
+  .tag-us   { background: #ddeaf8; color: #1a4a8a; }
+  .tag-int  { background: #e8eef4; color: #2c3e50; }
+  .tag-tax  { background: var(--gold-pale); color: #7a5f00; }
+  .tag-legal{ background: #f4e8e8; color: var(--red); }
+  .tag-fin  { background: #d5edd9; color: var(--green); }
+
+  /* STATS BANNER */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 16px 18px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    background: var(--slate);
+    color: #8898aa;
+    padding: 24px 60px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .doc-footer strong { color: var(--gold); }
+
+  /* HIDDEN CLASS */
+  .row-hidden { display: none; }
+
+  @media (max-width: 640px) {
+    .header { padding: 32px 24px; }
+    .main, .search-bar, .filters { padding: 0 18px; }
+    .abbr-table th:nth-child(4), .abbr-table td:nth-child(4) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eyebrow">Reference Document — Syria Sanctions Roadmap 2025–2027</div>
+  <h1>Abbreviations & <span>Terminology Glossary</span></h1>
+  <p>Every professional abbreviation used in the roadmap, explained in plain language. Use this as your reading companion.</p>
+</div>
+<div class="gold-rule"></div>
+
+<div class="search-bar">
+  <input type="text" class="search-input" id="searchInput" placeholder="Search abbreviation or keyword… e.g. OFAC, sanctions, IRS" oninput="filterTable()"/>
+</div>
+
+<div class="filters" id="filterBtns">
+  <button class="filter-btn active" onclick="setCategory('all', this)">All</button>
+  <button class="filter-btn" onclick="setCategory('us-reg', this)">🇺🇸 U.S. Regulators</button>
+  <button class="filter-btn" onclick="setCategory('tax', this)">💰 Tax & Reporting</button>
+  <button class="filter-btn" onclick="setCategory('sanctions', this)">⚖️ Sanctions & Law</button>
+  <button class="filter-btn" onclick="setCategory('finance', this)">🏦 Finance & Banking</button>
+  <button class="filter-btn" onclick="setCategory('intl', this)">🌐 International Bodies</button>
+  <button class="filter-btn" onclick="setCategory('governance', this)">📋 Governance & Roles</button>
+</div>
+
+<div class="main">
+
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num" id="totalCount">52</div><div class="stat-label">Total Abbreviations</div></div>
+    <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Categories</div></div>
+    <div class="stat-card"><div class="stat-num">2025</div><div class="stat-label">Most Recent Legal Update</div></div>
+    <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Regulatory Bodies</div></div>
+  </div>
+
+  <!-- TABLE -->
+  <table class="abbr-table" id="abbrTable">
+    <thead>
+      <tr>
+        <th style="width:110px">Abbreviation</th>
+        <th style="width:200px">Full Name</th>
+        <th>Plain-Language Explanation</th>
+        <th style="width:100px">Source / Body</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- U.S. REGULATORS -->
+      <tr data-cat="us-reg" data-text="ofac office foreign assets control">
+        <td><span class="abbr-code">OFAC</span></td>
+        <td><span class="abbr-full">Office of Foreign Assets Control</span></td>
+        <td><span class="tag tag-us">U.S. Gov</span><div class="abbr-desc">The U.S. Treasury Department unit that administers and enforces economic and trade sanctions. It maintains the SDN List and issues licenses permitting otherwise-prohibited transactions. Think of OFAC as the "sanctions police" of the United States.</div></td>
+        <td><span class="abbr-source">U.S. Treasury</span></td>
+      </tr>
+      <tr data-cat="us-reg" data-text="irs internal revenue service">
+        <td><span class="abbr-code">IRS</span></td>
+        <td><span class="abbr-full">Internal Revenue Service</span></td>
+        <td><span class="tag tag-us">U.S. Gov</span><div class="abbr-desc">The U.S. federal tax authority. For international purposes, the IRS administers FATCA — requiring foreign financial institutions worldwide to report U.S. account holders or face a 30% withholding tax on U.S.-source payments.</div></td>
+        <td><span class="abbr-source">U.S. Treasury</span></td>
+      </tr>
+      <tr data-cat="us-reg" data-text="fincen financial crimes enforcement network">
+        <td><span class="abbr-code">FinCEN</span></td>
+        <td><span class="abbr-full">Financial Crimes Enforcement Network</span></td>
+        <td><span class="tag tag-us">U.S. Gov</span><div class="abbr-desc">A U.S. Treasury bureau that collects and analyzes financial intelligence to combat money laundering, terrorist financing, and other financial crimes. In May 2025, FinCEN issued "exceptive relief" allowing U.S. banks to open correspondent accounts with Syrian banks.</div></td>
+        <td><span class="abbr-source">U.S. Treasury</span></td>
+      </tr>
+      <tr data-cat="us-reg" data-text="bis bureau industry security">
+        <td><span class="abbr-code">BIS</span></td>
+        <td><span class="abbr-full">Bureau of Industry and Security</span></td>
+        <td><span class="tag tag-us">U.S. Gov</span><div class="abbr-desc">Part of the U.S. Department of Commerce. BIS controls what goods, software, and technology can be exported from the United States. After E.O. 14312 (June 2025), BIS significantly eased export licensing requirements for civilian-use items going to Syria.</div></td>
+        <td><span class="abbr-source">Commerce Dept.</span></td>
+      </tr>
+      <tr data-cat="us-reg" data-text="state department foreign policy">
+        <td><span class="abbr-code">State Dept.</span></td>
+        <td><span class="abbr-full">U.S. Department of State</span></td>
+        <td><span class="tag tag-us">U.S. Gov</span><div class="abbr-desc">The U.S. foreign affairs ministry. It designates Foreign Terrorist Organizations (FTOs) and issues waivers under laws like the Caesar Act. The State Department revoked HTS's FTO designation and issued a 180-day Caesar Act waiver in May 2025.</div></td>
+        <td><span class="abbr-source">U.S. Gov</span></td>
+      </tr>
+
+      <!-- SANCTIONS & LAW -->
+      <tr data-cat="sanctions" data-text="sdn specially designated nationals blocked persons list">
+        <td><span class="abbr-code">SDN</span></td>
+        <td><span class="abbr-full">Specially Designated Nationals (and Blocked Persons List)</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">OFAC's master blacklist. Any individual or company on the SDN List has their U.S.-held assets frozen, and U.S. persons are generally prohibited from doing business with them. As of July 1, 2025, 518 Syria-related names were removed — but 139 Assad associates were simultaneously re-added.</div></td>
+        <td><span class="abbr-source">OFAC</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="eo executive order presidential">
+        <td><span class="abbr-code">E.O.</span></td>
+        <td><span class="abbr-full">Executive Order</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">A legally binding directive issued by the U.S. President. Syria's sanctions regime was built on six E.O.s (13338, 13399, 13460, 13572, 13573, 13582), all revoked by E.O. 14312 on June 30, 2025. E.O. 13894 was expanded to continue targeting Assad associates.</div></td>
+        <td><span class="abbr-source">White House</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="gl general license authorization">
+        <td><span class="abbr-code">GL</span></td>
+        <td><span class="abbr-full">General License</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">An OFAC authorization that permits a category of otherwise-prohibited transactions without requiring each person to apply individually. GL 24 (Jan 2025) and GL 25 (May 2025) were the two critical licenses that opened Syria transactions before the full sanctions were lifted.</div></td>
+        <td><span class="abbr-source">OFAC</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="sl specific license individual application">
+        <td><span class="abbr-code">SL</span></td>
+        <td><span class="abbr-full">Specific License</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">An OFAC license issued to a specific person or company for a specific transaction, when a General License does not cover the situation. Any Syrian government entity whose activities are not covered by GL 25 must apply for an SL directly through OFAC's online portal.</div></td>
+        <td><span class="abbr-source">OFAC</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="vsd voluntary self disclosure ofac penalty reduction">
+        <td><span class="abbr-code">VSD</span></td>
+        <td><span class="abbr-full">Voluntary Self-Disclosure</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">A process where a company proactively informs OFAC of a potential violation it discovered internally. Filing a VSD typically reduces OFAC penalties by up to 50%. Critical for any company that may have unknowingly violated Syria sanctions before July 1, 2025.</div></td>
+        <td><span class="abbr-source">OFAC</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="ubo ultimate beneficial owner ownership">
+        <td><span class="abbr-code">UBO</span></td>
+        <td><span class="abbr-full">Ultimate Beneficial Owner</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">The real human person(s) who ultimately own or control a company, looking through layers of corporate structures. OFAC's "50% Rule" means: if a sanctioned person owns 50% or more of a company — directly or indirectly — that company is also treated as blocked, even if not named on the SDN List.</div></td>
+        <td><span class="abbr-source">OFAC / FinCEN</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="cfr code federal regulations">
+        <td><span class="abbr-code">CFR</span></td>
+        <td><span class="abbr-full">Code of Federal Regulations</span></td>
+        <td><span class="tag tag-legal">Law</span><div class="abbr-desc">The official compilation of all U.S. federal regulations. Syria's sanctions rules were at 31 CFR Part 542. Following E.O. 14312, OFAC removed Part 542 from the CFR on August 26, 2025, formally erasing the Syria sanctions regulatory framework from U.S. law.</div></td>
+        <td><span class="abbr-source">U.S. Federal</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="fto foreign terrorist organization designation">
+        <td><span class="abbr-code">FTO</span></td>
+        <td><span class="abbr-full">Foreign Terrorist Organization</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">A formal designation by the U.S. State Department that prohibits U.S. persons from providing "material support" to that group. HTS (Hay'at Tahrir al-Sham) held this designation until July 2025, when it was revoked, removing a major barrier to engaging Syria's ruling authority.</div></td>
+        <td><span class="abbr-source">State Dept.</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="hts hayat tahrir al-sham syrian government">
+        <td><span class="abbr-code">HTS</span></td>
+        <td><span class="abbr-full">Hay'at Tahrir al-Sham</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">The Syrian armed group that led the overthrow of Assad in December 2024 and now forms the core of Syria's transitional government under President Ahmed al-Sharaa. Its FTO designation was revoked in July 2025, enabling legal engagement with Syria's government.</div></td>
+        <td><span class="abbr-source">State Dept.</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="paarss promoting accountability Assad regional stabilization sanctions">
+        <td><span class="abbr-code">PAARSS</span></td>
+        <td><span class="abbr-full">Promoting Accountability for Assad and Regional Stabilization Sanctions</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">The renamed sanctions program (formerly Syria-Related Sanctions Regulations) under E.O. 13894, as expanded by E.O. 14312. This is the surviving sanctions framework targeting Assad associates, human rights abusers, Captagon traffickers, and destabilizing regional actors.</div></td>
+        <td><span class="abbr-source">OFAC</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="ndaa national defense authorization act congress">
+        <td><span class="abbr-code">NDAA</span></td>
+        <td><span class="abbr-full">National Defense Authorization Act</span></td>
+        <td><span class="tag tag-legal">Law</span><div class="abbr-desc">The U.S. annual defense budget legislation. The FY 2026 NDAA (signed December 18, 2025) included §8369, which fully repealed the Caesar Act and set ongoing 180-day presidential certification conditions Syria must meet to maintain sanction-free status.</div></td>
+        <td><span class="abbr-source">U.S. Congress</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="bsa bank secrecy act anti-money laundering">
+        <td><span class="abbr-code">BSA</span></td>
+        <td><span class="abbr-full">Bank Secrecy Act</span></td>
+        <td><span class="tag tag-legal">U.S. Law</span><div class="abbr-desc">The foundational U.S. anti-money laundering law (1970). It requires financial institutions doing business with the U.S. to maintain AML programs, file Currency Transaction Reports (CTRs), and submit Suspicious Activity Reports (SARs) to FinCEN. Essential for Syrian banks seeking U.S. correspondent banking access.</div></td>
+        <td><span class="abbr-source">FinCEN</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="sar suspicious activity report filing">
+        <td><span class="abbr-code">SAR</span></td>
+        <td><span class="abbr-full">Suspicious Activity Report</span></td>
+        <td><span class="tag tag-fin">Banking</span><div class="abbr-desc">A mandatory report filed by financial institutions when they detect a transaction that may involve money laundering, fraud, or other financial crimes. In Syria, Legislative Decree 27 (2011) requires filing SARs with Syria's AML/CTF Authority. U.S. correspondent banks require Syrian partners to have a functioning SAR regime.</div></td>
+        <td><span class="abbr-source">FinCEN / FATF</span></td>
+      </tr>
+
+      <!-- TAX & REPORTING -->
+      <tr data-cat="tax" data-text="fatca foreign account tax compliance act reporting">
+        <td><span class="abbr-code">FATCA</span></td>
+        <td><span class="abbr-full">Foreign Account Tax Compliance Act</span></td>
+        <td><span class="tag tag-tax">Tax</span><div class="abbr-desc">A 2010 U.S. law (part of the HIRE Act) requiring all foreign financial institutions worldwide to identify and report accounts held by U.S. taxpayers to the IRS — or face a 30% withholding tax on U.S.-source payments. Every Syrian bank must now comply. Syria currently has no IGA with the U.S., making direct registration the only path.</div></td>
+        <td><span class="abbr-source">IRS / Treasury</span></td>
+      </tr>
+      <tr data-cat="tax" data-text="iga intergovernmental agreement model 1 2">
+        <td><span class="abbr-code">IGA</span></td>
+        <td><span class="abbr-full">Intergovernmental Agreement</span></td>
+        <td><span class="tag tag-tax">Tax</span><div class="abbr-desc">A bilateral treaty between a foreign country and the United States to implement FATCA. A Model 1 IGA (recommended for Syria) lets Syrian banks report U.S. account data to Syria's tax authority, which then shares it with the IRS — far simpler than each bank reporting directly. Over 115 countries have signed IGAs.</div></td>
+        <td><span class="abbr-source">U.S. Treasury / IRS</span></td>
+      </tr>
+      <tr data-cat="tax" data-text="giin global intermediary identification number registration">
+        <td><span class="abbr-code">GIIN</span></td>
+        <td><span class="abbr-full">Global Intermediary Identification Number</span></td>
+        <td><span class="tag tag-tax">Tax</span><div class="abbr-desc">A unique registration number assigned by the IRS to foreign financial institutions that register under FATCA. Without a GIIN, a Syrian bank will be subject to 30% withholding on any U.S.-source payments it receives. Registration is free, done online, and is the single most urgent tax compliance step.</div></td>
+        <td><span class="abbr-source">IRS</span></td>
+      </tr>
+      <tr data-cat="tax" data-text="ffi foreign financial institution registration compliance">
+        <td><span class="abbr-code">FFI</span></td>
+        <td><span class="abbr-full">Foreign Financial Institution</span></td>
+        <td><span class="tag tag-tax">Tax</span><div class="abbr-desc">FATCA's term for any non-U.S. bank, investment fund, insurance company, or other financial entity. Syrian banks, insurance companies, and investment firms are all FFIs under FATCA and must register with the IRS, obtain a GIIN, and comply with reporting obligations.</div></td>
+        <td><span class="abbr-source">IRS / FATCA</span></td>
+      </tr>
+      <tr data-cat="tax" data-text="ro responsible officer fatca certification irs">
+        <td><span class="abbr-code">RO</span></td>
+        <td><span class="abbr-full">Responsible Officer (FATCA)</span></td>
+        <td><span class="tag tag-tax">Tax</span><div class="abbr-desc">A senior officer of a foreign financial institution who is personally responsible for the entity's FATCA compliance and certifications to the IRS. The RO must complete periodic certifications and cannot fully delegate this responsibility. Appointment of an RO is mandatory for all FATCA-registered Syrian financial institutions.</div></td>
+        <td><span class="abbr-source">IRS / FATCA</span></td>
+      </tr>
+      <tr data-cat="tax" data-text="crs common reporting standard oecd automatic exchange">
+        <td><span class="abbr-code">CRS</span></td>
+        <td><span class="abbr-full">Common Reporting Standard</span></td>
+        <td><span class="tag tag-tax">Tax</span><div class="abbr-desc">The OECD's global equivalent of FATCA — a multilateral automatic exchange of financial account information between over 100 countries. While FATCA is U.S.-specific, CRS covers all participating countries. Syria will eventually need to adopt CRS as part of international financial integration.</div></td>
+        <td><span class="abbr-source">OECD</span></td>
+      </tr>
+      <tr data-cat="tax" data-text="hire act health care FATCA origin 2010">
+        <td><span class="abbr-code">HIRE Act</span></td>
+        <td><span class="abbr-full">Hiring Incentives to Restore Employment Act</span></td>
+        <td><span class="tag tag-tax">Tax</span><div class="abbr-desc">The 2010 U.S. law that created FATCA. Knowing its origin is useful context: FATCA was primarily a tax-gap-closing measure, not a sanctions tool — which is why it applies to Syria even after sanctions were lifted. Any Syrian FFI with U.S. account holders must comply regardless of sanctions status.</div></td>
+        <td><span class="abbr-source">U.S. Congress</span></td>
+      </tr>
+      <tr data-cat="tax" data-text="irc internal revenue code section 1471 1474">
+        <td><span class="abbr-code">IRC</span></td>
+        <td><span class="abbr-full">Internal Revenue Code</span></td>
+        <td><span class="tag tag-tax">Tax</span><div class="abbr-desc">The body of U.S. federal tax law. FATCA obligations are found in IRC §§1471–1474. These sections define who must comply, what must be reported, and the 30% withholding penalty for non-compliance. Referenced in all FATCA legal documentation.</div></td>
+        <td><span class="abbr-source">U.S. Law</span></td>
+      </tr>
+
+      <!-- FINANCE & BANKING -->
+      <tr data-cat="finance" data-text="aml anti money laundering program">
+        <td><span class="abbr-code">AML</span></td>
+        <td><span class="abbr-full">Anti-Money Laundering</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">A set of laws, regulations, and procedures designed to prevent criminals from disguising illegally obtained funds as legitimate income. AML programs are mandatory for all financial institutions. Syrian banks must have robust AML programs to access international correspondent banking and satisfy FATF requirements.</div></td>
+        <td><span class="abbr-source">FATF / FinCEN</span></td>
+      </tr>
+      <tr data-cat="finance" data-text="cft counter financing terrorism">
+        <td><span class="abbr-code">CFT</span></td>
+        <td><span class="abbr-full">Counter-Financing of Terrorism</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">Measures designed to prevent funds from reaching terrorist organizations. Always paired with AML in regulatory frameworks (written as "AML/CFT"). FATF Recommendations 5–8 specifically address CFT. A strong CFT program is critical for Syria to demonstrate it is not financing designated groups like ISIS.</div></td>
+        <td><span class="abbr-source">FATF / UN</span></td>
+      </tr>
+      <tr data-cat="finance" data-text="kyc know your customer due diligence customer identification">
+        <td><span class="abbr-code">KYC</span></td>
+        <td><span class="abbr-full">Know Your Customer</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">The mandatory process by which financial institutions verify the identity of their clients before and during a banking relationship. KYC includes collecting ID documents, understanding the source of funds, and assessing risk. International banks will require Syrian institutions to demonstrate strong KYC before opening accounts.</div></td>
+        <td><span class="abbr-source">FATF / Basel</span></td>
+      </tr>
+      <tr data-cat="finance" data-text="cdd customer due diligence enhanced">
+        <td><span class="abbr-code">CDD</span></td>
+        <td><span class="abbr-full">Customer Due Diligence</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">A more formal term for KYC processes. CDD includes identifying the customer, verifying their identity, understanding the nature of their business, and ongoing monitoring. "Enhanced Due Diligence (EDD)" applies to high-risk customers such as Politically Exposed Persons (PEPs) — common in the Syrian government context.</div></td>
+        <td><span class="abbr-source">FATF Rec. 10</span></td>
+      </tr>
+      <tr data-cat="finance" data-text="pep politically exposed person government official high risk">
+        <td><span class="abbr-code">PEP</span></td>
+        <td><span class="abbr-full">Politically Exposed Person</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">An individual who holds or has held a prominent public position (e.g., government minister, military commander, state company executive) or is closely related to one. PEPs are considered higher money-laundering risk and require Enhanced Due Diligence. Senior Syrian government officials and directors of government-owned companies will be treated as PEPs by international banks.</div></td>
+        <td><span class="abbr-source">FATF Rec. 12</span></td>
+      </tr>
+      <tr data-cat="finance" data-text="nra national risk assessment fatf methodology">
+        <td><span class="abbr-code">NRA</span></td>
+        <td><span class="abbr-full">National Risk Assessment</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">A formal assessment conducted by a country of its own money laundering and terrorist financing risks, using FATF's methodology. Syria must prepare and submit an NRA as part of the FATF on-site evaluation process. A strong NRA demonstrates the country understands its risk landscape and has proportionate controls.</div></td>
+        <td><span class="abbr-source">FATF</span></td>
+      </tr>
+      <tr data-cat="finance" data-text="ifc international finance corporation world bank private sector">
+        <td><span class="abbr-code">IFC</span></td>
+        <td><span class="abbr-full">International Finance Corporation</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">The private-sector lending arm of the World Bank Group. IFC provides loans, equity, and advisory services to private businesses in developing countries. It is a key financing source for private Syrian companies and public-private partnerships. IFC requires strong governance and AML/CFT compliance from borrowers.</div></td>
+        <td><span class="abbr-source">World Bank Group</span></td>
+      </tr>
+      <tr data-cat="finance" data-text="isdb islamic development bank shariah compliant financing">
+        <td><span class="abbr-code">IsDB</span></td>
+        <td><span class="abbr-full">Islamic Development Bank</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">A multilateral development bank headquartered in Jeddah that provides Shariah-compliant financing (no conventional interest) to Muslim-majority countries. IsDB is a natural financing partner for Syria's reconstruction. Membership and access requires demonstrated political stability and financial governance reforms.</div></td>
+        <td><span class="abbr-source">Multilateral</span></td>
+      </tr>
+      <tr data-cat="finance" data-text="ibrd international bank reconstruction development world bank loans">
+        <td><span class="abbr-code">IBRD</span></td>
+        <td><span class="abbr-full">International Bank for Reconstruction and Development</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">The original "World Bank" — provides loans to middle-income countries for development projects. Syria's $216 billion reconstruction need will require IBRD engagement. Access requires OFAC and FATCA compliance, and no outstanding sanctions against the borrowing government entity.</div></td>
+        <td><span class="abbr-source">World Bank Group</span></td>
+      </tr>
+      <tr data-cat="finance" data-text="ida international development association world bank low income">
+        <td><span class="abbr-code">IDA</span></td>
+        <td><span class="abbr-full">International Development Association</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">The World Bank's fund for the poorest countries, providing grants and zero- or low-interest loans. Syria, given its post-war economic devastation, may qualify for IDA financing — which is even more favorable than IBRD terms. Requires government reform benchmarks to be met.</div></td>
+        <td><span class="abbr-source">World Bank Group</span></td>
+      </tr>
+
+      <!-- INTERNATIONAL BODIES -->
+      <tr data-cat="intl" data-text="fatf financial action task force grey gray list blacklist aml standards">
+        <td><span class="abbr-code">FATF</span></td>
+        <td><span class="abbr-full">Financial Action Task Force</span></td>
+        <td><span class="tag tag-int">International</span><div class="abbr-desc">The global standard-setter for AML/CFT and counter-proliferation financing. FATF's 40 Recommendations are the internationally accepted framework. Countries are rated on compliance and placed on a "white list" (compliant), "gray list" (increased monitoring — where Syria has been since 2010), or "black list" (high-risk). Gray-listing causes banks worldwide to apply much stricter scrutiny to Syrian transactions.</div></td>
+        <td><span class="abbr-source">FATF (Paris)</span></td>
+      </tr>
+      <tr data-cat="intl" data-text="menafatf middle east north africa financial action task force">
+        <td><span class="abbr-code">MENAFATF</span></td>
+        <td><span class="abbr-full">Middle East and North Africa Financial Action Task Force</span></td>
+        <td><span class="tag tag-int">International</span><div class="abbr-desc">The FATF-style regional body for the MENA region, of which Syria is a member. MENAFATF coordinates AML/CFT evaluations and technical assistance in the region. Syria's engagement with MENAFATF is a prerequisite for the FATF on-site evaluation that would clear Syria from the gray list.</div></td>
+        <td><span class="abbr-source">FATF / Regional</span></td>
+      </tr>
+      <tr data-cat="intl" data-text="oecd organisation economic cooperation development tax transparency">
+        <td><span class="abbr-code">OECD</span></td>
+        <td><span class="abbr-full">Organisation for Economic Co-operation and Development</span></td>
+        <td><span class="tag tag-int">International</span><div class="abbr-desc">An international organization of 38 countries that sets global economic, tax, and financial standards. The OECD created the CRS (Common Reporting Standard) — FATCA's global counterpart. OECD membership is a long-term goal that signals full economic normalization for any recovering country.</div></td>
+        <td><span class="abbr-source">International</span></td>
+      </tr>
+      <tr data-cat="intl" data-text="un united nations security council sanctions">
+        <td><span class="abbr-code">UN</span></td>
+        <td><span class="abbr-full">United Nations</span></td>
+        <td><span class="tag tag-int">International</span><div class="abbr-desc">The global intergovernmental organization. The UN Security Council maintains its own sanctions lists separate from U.S. OFAC lists. All AML/CFT screening systems must check UN lists in addition to OFAC and EU lists. Some Syria-related UN sanctions (e.g., on ISIS, Al-Qaeda) remain fully in force regardless of U.S. relief.</div></td>
+        <td><span class="abbr-source">International</span></td>
+      </tr>
+      <tr data-cat="intl" data-text="eu european union sanctions restrictive measures">
+        <td><span class="abbr-code">EU</span></td>
+        <td><span class="abbr-full">European Union</span></td>
+        <td><span class="tag tag-int">International</span><div class="abbr-desc">The political and economic union of 27 European nations. The EU maintained its own Syria sanctions program separate from U.S. sanctions. The EU lifted the majority of its Syria sanctions from May 28, 2025, but retained measures on military items, surveillance technology, and cultural property. Syrian companies transacting with EU persons must check both OFAC and EU lists.</div></td>
+        <td><span class="abbr-source">EU Council</span></td>
+      </tr>
+      <tr data-cat="intl" data-text="mla mutual legal assistance treaty cross border legal cooperation">
+        <td><span class="abbr-code">MLA</span></td>
+        <td><span class="abbr-full">Mutual Legal Assistance</span></td>
+        <td><span class="tag tag-int">International</span><div class="abbr-desc">A process through which countries formally request and provide assistance to each other in criminal investigations and proceedings — including sharing financial evidence, freezing assets, and extraditing suspects. Syria improved its MLA framework under Legislative Decree 27 (2011). A functioning MLA framework is required under FATF Recommendations 36–38.</div></td>
+        <td><span class="abbr-source">FATF / UN</span></td>
+      </tr>
+      <tr data-cat="intl" data-text="sdf syrian democratic forces agreement march 2025">
+        <td><span class="abbr-code">SDF</span></td>
+        <td><span class="abbr-full">Syrian Democratic Forces</span></td>
+        <td><span class="tag tag-int">Syria</span><div class="abbr-desc">The Kurdish-led armed group controlling parts of northeastern Syria. The March 10, 2025 agreement between the Syrian government and the SDF is one of the conditions the U.S. President must certify to Congress every 180 days (per NDAA §8369) to maintain Syria's sanctions-free status. Failure to implement this agreement could trigger sanctions reimposition.</div></td>
+        <td><span class="abbr-source">Syria / U.S. State</span></td>
+      </tr>
+
+      <!-- GOVERNANCE & ROLES -->
+      <tr data-cat="governance" data-text="cco chief compliance officer role corporate governance">
+        <td><span class="abbr-code">CCO</span></td>
+        <td><span class="abbr-full">Chief Compliance Officer</span></td>
+        <td><span class="tag tag-fin">Governance</span><div class="abbr-desc">The senior executive responsible for overseeing and managing compliance with laws, regulations, and internal policies across an organization. In the context of this roadmap, the CCO leads the Internal Compliance Committee, oversees OFAC screening, AML/CFT programs, and coordinates with legal counsel. Every major Syrian government-owned company should appoint a CCO.</div></td>
+        <td><span class="abbr-source">Corporate Gov.</span></td>
+      </tr>
+      <tr data-cat="governance" data-text="icc internal compliance committee board oversight">
+        <td><span class="abbr-code">ICC</span></td>
+        <td><span class="abbr-full">Internal Compliance Committee</span></td>
+        <td><span class="tag tag-fin">Governance</span><div class="abbr-desc">The dedicated internal body established within an organization (here: the Syrian government) to oversee sanctions compliance, AML/CFT obligations, and FATCA reporting. In this roadmap, the ICC should include the CCO, AML Officer, FATCA Responsible Officer, and General Counsel. It reports directly to the Board of Members.</div></td>
+        <td><span class="abbr-source">Internal / Best Practice</span></td>
+      </tr>
+      <tr data-cat="governance" data-text="ctr currency transaction report bank reporting threshold">
+        <td><span class="abbr-code">CTR</span></td>
+        <td><span class="abbr-full">Currency Transaction Report</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">A mandatory report filed by U.S. financial institutions with FinCEN for any cash transaction over $10,000. For Syrian banks seeking U.S. correspondent relationships, understanding and adopting equivalent reporting thresholds under BSA requirements demonstrates AML compliance credibility.</div></td>
+        <td><span class="abbr-source">FinCEN / BSA</span></td>
+      </tr>
+      <tr data-cat="governance" data-text="ppp public private partnership investment structure">
+        <td><span class="abbr-code">PPP</span></td>
+        <td><span class="abbr-full">Public-Private Partnership</span></td>
+        <td><span class="tag tag-fin">Governance</span><div class="abbr-desc">A cooperative arrangement between government and private sector companies to finance, build, and operate public services or infrastructure. PPP structures are commonly used in reconstruction efforts. For Syrian government-owned companies, PPP arrangements with foreign investors (now permitted post-E.O. 14312) can accelerate reconstruction while sharing financial risk.</div></td>
+        <td><span class="abbr-source">Finance / Gov.</span></td>
+      </tr>
+      <tr data-cat="governance" data-text="edd enhanced due diligence high risk customers pep">
+        <td><span class="abbr-code">EDD</span></td>
+        <td><span class="abbr-full">Enhanced Due Diligence</span></td>
+        <td><span class="tag tag-fin">Finance</span><div class="abbr-desc">A higher level of scrutiny applied to high-risk customers, transactions, or jurisdictions. International banks will apply EDD to any Syrian government entity or official given Syria's recent sanctions history and FATF gray-list status. EDD involves deeper investigation into source of funds, ownership structures, and business purpose.</div></td>
+        <td><span class="abbr-source">FATF Rec. 19</span></td>
+      </tr>
+      <tr data-cat="governance" data-text="cbw chemical biological weapons act syria export controls">
+        <td><span class="abbr-code">CBW Act</span></td>
+        <td><span class="abbr-full">Chemical and Biological Weapons Control and Warfare Elimination Act</span></td>
+        <td><span class="tag tag-legal">Law</span><div class="abbr-desc">A U.S. law imposing sanctions and export restrictions on countries found to have used chemical or biological weapons. E.O. 14312 waived certain CBW Act provisions relating to Syria (foreign assistance, U.S. government credit, financial institution loans). However, Syria must demonstrate it is not pursuing chemical or biological weapons programs to maintain this waiver.</div></td>
+        <td><span class="abbr-source">U.S. Congress</span></td>
+      </tr>
+      <tr data-cat="sanctions" data-text="sysr syrian sanctions regulations 31 cfr 542 revoked">
+        <td><span class="abbr-code">SySR</span></td>
+        <td><span class="abbr-full">Syrian Sanctions Regulations</span></td>
+        <td><span class="tag tag-legal">Sanctions</span><div class="abbr-desc">The now-defunct U.S. regulatory framework at 31 CFR Part 542 that implemented Syria's comprehensive sanctions. Revoked by E.O. 14312 effective July 1, 2025, and formally removed from the Code of Federal Regulations on August 26, 2025. Understanding this term is important because any violation that occurred before July 1, 2025 under the SySR may still be investigated by OFAC.</div></td>
+        <td><span class="abbr-source">OFAC (revoked)</span></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div style="margin-top:20px; padding:16px 20px; background:#fff; border:1px solid var(--border); border-radius:6px; font-size:12.5px; color:var(--muted);">
+    <strong style="color:var(--slate);">📌 Note for all future documents:</strong> Per board instruction, all professional abbreviations in future roadmaps, reports, and strategic documents will include the full name and plain-language explanation in parentheses on first use — e.g., <em>OFAC (Office of Foreign Assets Control — the U.S. Treasury unit that administers sanctions)</em> — and this glossary table will be appended to every document as a reference annex.
+  </div>
+
+</div>
+
+<div class="doc-footer">
+  <strong>Usage Note:</strong> This glossary is a companion document to the Syria Government Companies — OFAC & FATCA Sanctions Relief Roadmap 2025–2027. Use the search bar to find any abbreviation instantly. Filter by category to focus on a specific area (e.g., "Tax & Reporting" when reviewing FATCA steps, "Sanctions & Law" when reviewing OFAC steps). All definitions are based on current U.S. law as of April 2026.
+</div>
+
+<script>
+  function filterTable() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('#abbrTable tbody tr');
+    let count = 0;
+    rows.forEach(r => {
+      const text = r.getAttribute('data-text') + ' ' + r.innerText.toLowerCase();
+      const catMatch = activeCat === 'all' || r.getAttribute('data-cat') === activeCat;
+      const searchMatch = text.includes(q);
+      if (catMatch && searchMatch) {
+        r.style.display = '';
+        count++;
+      } else {
+        r.style.display = 'none';
+      }
+    });
+    document.getElementById('totalCount').textContent = count;
+  }
+
+  let activeCat = 'all';
+  function setCategory(cat, btn) {
+    activeCat = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterTable();
+  }
+</script>
+</body>
+</html>
